@@ -1,7 +1,7 @@
 .cardcontainer{
     background-color: rgba(204, 202, 202, 0.781);
     width:300px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     height:350px;
     margin: 20px;
     border-radius: 10px;
