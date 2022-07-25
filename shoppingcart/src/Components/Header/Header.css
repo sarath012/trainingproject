@@ -13,6 +13,7 @@
 }
 
 .heading{
+    display: flex;
     align-content: center;
     color: white;
     margin: 0;
