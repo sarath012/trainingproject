@@ -5,7 +5,7 @@ import Imagecarousel from './Imagecarousel/Imagecarousel';
 
 export default function Product() {
     const {selectedProduct, setSelectedProduct} = useContext(appContext);
-    console.log(selectedProduct)
+    // console.log(selectedProduct)
     // comment
   return (
 

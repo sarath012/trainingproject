@@ -8,53 +8,43 @@ import { appContext } from "../../Context/AppContext";
 import Product from "../Product/Product";
 
 export default function Products() {
-  const [selectProducts, setSelectProducts] = useState(data.products);
+  // const [selectProducts, setSelectProducts] = useState({});
   const {
     selectedProduct,
-    setSelectedProduct,
+    // setSelectedProduct,
     sortArray,
-    setSortArray,
+    // setSortArray,
     titleFilter,
-    setTitleFilter
+    // setTitleFilter
   } = useContext(appContext);
 
-  console.log(titleFilter)
-
-
-  useEffect(() => {
-    
-    function sortedarray(sortArray) {
-      const types = {
-        none: "",
-        price: "price",
-        rating: "rating",
-        discountPercentage: "discountPercentage",
-      };
-      const sortProperty = types[sortArray];
-      const sorted = [...selectProducts].sort(
-        (a, b) => a[sortProperty] - b[sortProperty]
-      );
-      setSelectProducts(sorted);
+  const compare = (a, b) => {
+    if (sortArray === "none") {
+      return 0;
     }
-    sortedarray(sortArray);
-  }, [sortArray]);
+    return a[sortArray] - b[sortArray];
+  };
 
-  
+  console.log(titleFilter);
 
-
-  if(selectedProduct!==null){
-    return <Product />
+  if (selectedProduct !== null) {
+    return <Product />;
   }
 
   return (
     <div>
-      <Header />
+      <Header data={data} />
       <Aside />
 
       <div className="productcontainer">
-        {selectProducts.map((product) => (
-          <Card product={product} />
-        ))}
+        {data.products
+          .sort(compare)
+          .filter((product) =>
+            product.title.toLowerCase().includes(titleFilter)
+          )
+          .map((product) => (
+            <Card product={product} />
+          ))}
       </div>
     </div>
   );
