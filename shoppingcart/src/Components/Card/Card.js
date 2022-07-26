@@ -23,6 +23,7 @@ export default function Card({product}) {
             </div>
             <div className='rating'>
                 <p><b>Rating: </b>{product.rating}</p>
+                <p><b>discount </b>{product.discountPercentage}%</p>
             </div>
         </div>
         
