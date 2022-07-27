@@ -9,7 +9,12 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [sortArray, setSortArray] = useState("");
-  const [titleFilter,setTitleFilter] = useState("")
+  const [titleFilter,setTitleFilter] = useState("");
+  const [filter, setFilter] = useState({
+    brand: [],
+    category: [],
+    stock: true
+  })
 
   return (
     <div className="App">
@@ -22,7 +27,9 @@ function App() {
           sortArray,
           setSortArray,
           titleFilter,
-          setTitleFilter
+          setTitleFilter,
+          filter, 
+          setFilter
         }}
       >
         {isLoggedIn ? <Products /> : <Login />}
